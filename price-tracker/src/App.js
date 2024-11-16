@@ -12,7 +12,6 @@ import { ProductInfoProvider } from "./contexts/ProductInfoProvider";
 import React, { useState } from "react";
 import { useTheme } from "./contexts/ThemeProvider";
 import PriceTracker from "./components/PriceTracker";
-import PriceTrackerContactUs from "./pages/PriceTrackerContactUs";
 import PriceTrackerCommunity from "./pages/PriceTrackerCommunity";
 import PriceTrackerHelp from "./pages/PriceTrackerHelp";
 import PriceTrackerNavBar from "./components/PriceTrackerNavBar";
@@ -33,10 +32,6 @@ function App() {
               <Route
                 path="/community"
                 element={<PriceTrackerCommunity />}
-              ></Route>
-              <Route
-                path="/contactus"
-                element={<PriceTrackerContactUs />}
               ></Route>
               <Route path="/help" element={<PriceTrackerHelp />}></Route>
             </Routes>

@@ -15,45 +15,60 @@ const ProductInfoProvider = ({ children }) => {
     // },
   ]);
 
-  const handleAddProduct = (newProductName, newProductNumber) => {
+  const handleAddProduct = (
+    newProductName,
+    newProductNumber,
+    newProductWebsite
+  ) => {
+    console.log(
+      "handelAddProduct",
+      newProductName,
+      newProductNumber,
+      newProductWebsite
+    );
     // debugger;
     const newProduct = {
       id: Date.now(), // Simple unique ID generation
       name: newProductName,
       number: newProductNumber,
-      websites: [],
+      websites: [newProductWebsite],
       prices: [],
     };
     setProducts([...products, newProduct]);
-    console.log("After Adding", products);
+    console.log("After handleAddProduct", products);
   };
 
   const handleRemoveProduct = (id) => {
-    console.log("handelRemoveProduct", id);
+    //console.log("handelRemoveProduct", id);
     setProducts(products.filter((item) => item.id !== id));
-    console.log("After Removing", products);
+    //console.log("After handleRemoveProduct", products);
   };
 
   const handleUpdateProductName = (id, newName) => {
+    //console.log("handleUpdateProductName", id);
     setProducts(
       products.map((item) =>
         item.id === id ? { ...item, name: newName } : item
       )
     );
+    //console.log("After handleUpdateProductName", products);
   };
 
   const handleUpdateProductNumber = (id, newProductNumber) => {
+    //console.log("handleUpdateProductNumber", id);
     setProducts(
       products.map((item) =>
         item.id === id ? { ...item, number: newProductNumber } : item
       )
     );
+    //console.log("After handleUpdateProductNumber", products);
   };
 
   const handleAddProductTrackedWebsites = (
     id,
     newProductTrackedWebsitesToAdd
   ) => {
+    /*
     console.log(
       "ProductInfoProvider: Before: ",
       "products websites :",
@@ -61,6 +76,7 @@ const ProductInfoProvider = ({ children }) => {
       id,
       newProductTrackedWebsitesToAdd
     );
+    */
     setProducts(
       products.map((item) =>
         item.id === id
@@ -75,13 +91,14 @@ const ProductInfoProvider = ({ children }) => {
             }
           : item
       )
-    );
+    ); /*
     console.log(
       "ProductInfoProvider: After: ",
       products.websites,
       id,
       newProductTrackedWebsitesToAdd
     );
+    */
   };
 
   const handleRemoveProductTrackedWebsites = (
@@ -93,13 +110,7 @@ const ProductInfoProvider = ({ children }) => {
         item.id === id
           ? {
               ...item,
-              websites: item.websites.filter(
-                (t) => t !== productTrackedWebsitesToRemove
-              ),
-              /**
-               * const result = arr1.filter(item => !arr2.includes(item));
-               [...new Set(result)]; // Remove duplicates
-               */
+              websites: productTrackedWebsitesToRemove,
             }
           : item
       )

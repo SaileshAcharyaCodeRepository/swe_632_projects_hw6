@@ -27,9 +27,6 @@ const PriceTrackerNavBar = React.memo(() => {
             <Nav.Link as={Link} to="/community">
               Reviews
             </Nav.Link>
-            <Nav.Link as={Link} to="/contactus">
-              Contact Us
-            </Nav.Link>
             <Nav.Link as={Link} to="/help">
               Help
             </Nav.Link>

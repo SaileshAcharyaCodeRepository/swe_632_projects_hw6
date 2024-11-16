@@ -5,10 +5,13 @@ import { Button, Form, Toast, ToastContainer } from "react-bootstrap";
 
 import { useTheme } from "../contexts/ThemeProvider";
 
+import Rating from "./PriceTrackerRating";
 import "../styles/PriceTrackerCommunity.css";
 
 const PriceTrackerCommunity = React.memo(() => {
   const { theme } = useTheme();
+
+  const [rate, setRate] = useState(0);
 
   const [inputs, setInputs] = useState([{ name: "", value: "" }]);
   const [inputsWebsite, setWebsiteInputs] = useState([{ name: "", value: "" }]);
@@ -57,7 +60,7 @@ const PriceTrackerCommunity = React.memo(() => {
   return (
     <>
       {/** Add Button for Products To Track */}
-      <Button className="add-card" variant={theme} onClick={addInput}>
+      <Button className="add-card" variant="success" onClick={addInput}>
         Add Review
       </Button>
       {/** Add Products for Products To Track */}
@@ -98,6 +101,8 @@ const PriceTrackerCommunity = React.memo(() => {
                   handleInputChange(index, "value", e.target.value)
                 }
               />
+              <Rating />
+              <br />
               <Button
                 className="price-tracker-community-remove-button"
                 variant="danger"

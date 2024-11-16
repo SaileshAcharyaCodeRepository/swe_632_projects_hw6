@@ -116,7 +116,7 @@ const PriceTrackerContactUs = () => {
             </Form.Group>
 
             <Button
-              className="price-tracker-contact-us-page-button"
+              className="price-tracker-contact-us-page-button btn-lg"
               variant="success"
               type="submit"
             >

@@ -20,6 +20,7 @@ const PriceTrackerPromptModal = ({ isOpen, onClose, onSubmit }) => {
 
   const [inputName, setInputName] = useState("");
   const [inputNumber, setInputNumber] = useState("");
+  const [inputWebsite, setInputWebsite] = useState("");
 
   const [showToast, setShowToast] = useState(false);
   const toggleShowToast = () => setShowToast(!showToast);
@@ -39,15 +40,21 @@ const PriceTrackerPromptModal = ({ isOpen, onClose, onSubmit }) => {
   const handleInputNumberChange = (event) => {
     setInputNumber(event.target.value);
   };
+  const handleInputWebsite = (event) => {
+    setInputWebsite(event.target.value);
+  };
   const handleSubmit = () => {
+    /*
     console.log(
       "prod exists: ",
       checkIfObjectExists({ name: inputName, number: inputNumber })
     );
+    */
     if (!checkIfObjectExists({ name: inputName, number: inputNumber })) {
-      onSubmit(inputName, inputNumber);
+      onSubmit(inputName, inputNumber, inputWebsite);
       setInputName("");
       setInputNumber("");
+      setInputWebsite("");
       onClose();
       setShowToastSuccess(true);
     } else {
@@ -104,6 +111,28 @@ const PriceTrackerPromptModal = ({ isOpen, onClose, onSubmit }) => {
                   value={inputNumber}
                   onChange={handleInputNumberChange}
                   placeholder="Enter Manufacturer Product Number Here"
+                  required
+                />
+              </OverlayTrigger>
+            </Form.Group>
+
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Website to Track</Form.Label>
+              <OverlayTrigger
+                placement="right"
+                overlay={
+                  <Tooltip id="tooltip-right">Add name of the website</Tooltip>
+                }
+              >
+                <Form.Control
+                  type="text"
+                  name="product-website"
+                  value={inputWebsite}
+                  onChange={handleInputWebsite}
+                  placeholder="Enter Website Name Here"
                   required
                 />
               </OverlayTrigger>

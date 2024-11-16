@@ -40,11 +40,11 @@ const PriceTrackerForm = ({
     handleUpdateProductName,
     handleUpdateProductNumber,
     handleAddProductTrackedWebsites,
-    // handleRemoveProductTrackedWebsites,
+    handleRemoveProductTrackedWebsites,
   } = useProductInfoContext();
 
-  const [inputs, setInputs] = useState([]);
-  //const [inputs, setInputs] = useState(currWebsites);
+  //const [inputs, setInputs] = useState([]);
+  const [inputs, setInputs] = useState(currWebsites);
 
   const handleAdd = () => {
     setInputs([...inputs, ""]);
@@ -57,17 +57,11 @@ const PriceTrackerForm = ({
   };
 
   const handleRemove = (index) => {
-    //setInputs((prevItems) => prevItems.filter((_, i) => i !== index));
-    const newItems = inputs.filter((_, i) => i !== index);
-    setInputs(newItems);
-    console.log(
-      "On Remove Website: After: ",
-      currID,
-      "curr Inputs",
-      inputs,
-      "new Items",
-      newItems
-    );
+    currWebsites = inputs.filter((_, i) => i !== index);
+    console.log(currWebsites);
+    setInputs(currWebsites);
+    handleRemoveProductTrackedWebsites(currID, currWebsites);
+    //console.log(inputs.filter((_, i) => i !== index));
   };
 
   /*
@@ -92,13 +86,17 @@ const PriceTrackerForm = ({
     const newArray = uniqueArray.filter(Boolean);
     setInputs(newArray);
 
-    handleAddProductTrackedWebsites(currID, inputs);
+    handleAddProductTrackedWebsites(currID, newArray);
     handleClose();
   };
 
   return (
     <>
-      <Button className="edit-info-button" variant={theme} onClick={handleShow}>
+      <Button
+        className="edit-info-button"
+        variant="success"
+        onClick={handleShow}
+      >
         Edit Info
       </Button>
 
@@ -160,7 +158,7 @@ const PriceTrackerForm = ({
                     />
                     <Button
                       className="edit-info-button"
-                      variant={theme}
+                      variant="danger"
                       onClick={() => handleRemove(index)}
                     >
                       Remove
@@ -171,7 +169,7 @@ const PriceTrackerForm = ({
             </div>
             <Button
               className="edit-info-button"
-              variant={theme}
+              variant="success"
               onClick={handleAdd}
             >
               Add New Website
@@ -181,7 +179,7 @@ const PriceTrackerForm = ({
         <Modal.Footer>
           <Button
             className="edit-info-button"
-            variant={theme}
+            variant="success"
             onClick={handleCloseAndSubmit}
           >
             Save Changes

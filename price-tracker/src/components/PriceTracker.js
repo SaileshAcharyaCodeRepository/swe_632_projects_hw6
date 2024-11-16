@@ -37,16 +37,23 @@ function PriceTracker() {
   /** Prompt To Get Initial Info About Products */
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleOpenModal = () => {
-    console.log("Handle Open:", modalIsOpen);
+    //console.log("Handle Open:", modalIsOpen);
     setModalIsOpen(true);
   };
   const handleCloseModal = () => {
     setModalIsOpen(false);
   };
-  const handleSubmit = (inputName, inputNumber) => {
+  const handleSubmit = (inputName, inputNumber, inputWebsite) => {
     // Do something with the input value
-    console.log("Submitted Product name number input:", inputName, inputNumber);
-    handleAddProduct(inputName, inputNumber);
+    /*
+    console.log(
+      "Submitted Product name number input:",
+      inputName,
+      inputNumber,
+      inputWebsite
+    );
+    */
+    handleAddProduct(inputName, inputNumber, inputWebsite);
   };
   /** Prompt To Get Initial Info About Products */
 
@@ -80,7 +87,7 @@ function PriceTracker() {
       {/** Nav Bar */}
 
       {/** Add Button for Products To Track */}
-      <Button className="add-card" variant={theme} onClick={handleOpenModal}>
+      <Button className="add-card" variant="success" onClick={handleOpenModal}>
         Add Item
       </Button>
       {/** Add Products for Products To Track */}
@@ -98,14 +105,16 @@ function PriceTracker() {
         {/* {console.log(typeof products)} */}
         {products.map((item) => (
           <div key={item.id}>
-            {console.log(
+            {/*
+            console.log(
               typeof products,
               "in loop: ",
               typeof item,
               item.id,
               item.name,
               item.number
-            )}
+            )
+            */}
             {/*console.log(item.id, products.name, products.number)} */}
             <PriceTrackerCard
               currItem={item}
@@ -117,7 +126,7 @@ function PriceTracker() {
             ></PriceTrackerCard>
             <Button
               className="remove-card"
-              variant={theme}
+              variant="danger"
               onClick={() => handleRemovalOfItem(item.id)}
             >
               Remove

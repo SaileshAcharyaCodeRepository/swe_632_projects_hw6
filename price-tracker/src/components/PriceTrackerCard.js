@@ -44,7 +44,8 @@ const PriceTrackerCard = ({
         <Card.Body>
           <Card.Title>{currName}</Card.Title>
           <Card.Text>Mfr Num : {currNumber}</Card.Text>
-          {console.log(
+          {/*
+          console.log(
             "Card Body: ",
             currName,
             currNumber,
@@ -56,9 +57,14 @@ const PriceTrackerCard = ({
             "products : ",
             typeof products,
             products
-          )}
+          )
+            */}
           {/*This is Modal Component to show Product Details*/}
-          <Button className="details" variant={theme} onClick={handleShowModal}>
+          <Button
+            className="details"
+            variant="success"
+            onClick={handleShowModal}
+          >
             Details
           </Button>
           <Modal show={show} onHide={handleCloseModal} centered>
@@ -74,7 +80,9 @@ const PriceTrackerCard = ({
                   </tr>
                 </thead>
                 <tbody>
-                  {console.log("currItem: ", currItem)}
+                  {
+                    //console.log("currItem: ", currItem)
+                  }
                   {currItem.websites
                     .filter((item) => item)
                     .map((item, index) => (
@@ -87,7 +95,7 @@ const PriceTrackerCard = ({
               </Table>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant={theme} onClick={handleCloseModal}>
+              <Button variant="success" onClick={handleCloseModal}>
                 Close
               </Button>
             </Modal.Footer>
