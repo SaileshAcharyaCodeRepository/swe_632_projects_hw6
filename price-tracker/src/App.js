@@ -25,7 +25,6 @@ function App() {
       <div className="App">
         <ThemeProvider>
           <ProductInfoProvider>
-            <PriceTrackerTheme></PriceTrackerTheme>
             <PriceTrackerNavBar></PriceTrackerNavBar>
             <Routes>
               <Route path="/" element={<PriceTracker />}></Route>
