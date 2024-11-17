@@ -1,6 +1,9 @@
 // Gemini AI assisted code
 
 import React, { useState } from "react";
+
+import { Link } from "react-router-dom";
+
 import { Button, Form, Toast, ToastContainer } from "react-bootstrap";
 
 import { useTheme } from "../contexts/ThemeProvider";
@@ -158,6 +161,26 @@ const PriceTrackerCommunity = React.memo(() => {
         </Toast>
       </ToastContainer>
       {/*This is Toast Component to show review not sent*/}
+
+      <div
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          padding: "1px",
+        }}
+      >
+        <Link to="/">
+          <Button style={{ marginRight: "5px", padding: "1px", gap: "1px" }}>
+            Go to Main Page
+          </Button>
+        </Link>
+        <Link to="/help">
+          <Button style={{ padding: "1px", gap: "1px" }}>
+            Go to Help Page
+          </Button>
+        </Link>
+      </div>
     </>
   );
 });

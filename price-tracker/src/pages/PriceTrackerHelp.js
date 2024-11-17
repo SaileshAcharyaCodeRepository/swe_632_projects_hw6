@@ -2,6 +2,8 @@
 
 import React, { useState, useRef } from "react";
 
+import { Link } from "react-router-dom";
+
 import emailjs from "@emailjs/browser";
 
 import { Button, Form, Toast, ToastContainer } from "react-bootstrap";
@@ -150,7 +152,6 @@ const HelpPage = () => {
       >
         <div>
           <br />
-          <br />
           <h1>Have Questions? Comments?</h1>
           <br />
           <h2>Send us a message</h2>
@@ -218,6 +219,26 @@ const HelpPage = () => {
           </ToastContainer>
           {/*This is Toast Component to show review sent*/}
         </div>
+      </div>
+
+      <div
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          padding: "1px",
+        }}
+      >
+        <Link to="/">
+          <Button style={{ marginRight: "5px", padding: "1px", gap: "1px" }}>
+            Go to Main Page
+          </Button>
+        </Link>
+        <Link to="/community">
+          <Button style={{ padding: "1px", gap: "1px" }}>
+            Go to Review Page
+          </Button>
+        </Link>
       </div>
     </>
   );

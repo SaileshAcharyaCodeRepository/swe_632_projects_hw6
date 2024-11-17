@@ -1,12 +1,14 @@
 // Gemini AI assisted code
 
 import React from "react";
-import { Nav, Navbar, Container } from "react-bootstrap";
+import { Nav, Navbar, Form, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import { useTheme } from "../contexts/ThemeProvider";
 
 import logo from "../assets/logo.png";
+
+import "../styles/PriceTrackerNavBar.css";
 
 const PriceTrackerNavBar = React.memo(() => {
   const { theme, toggleTheme } = useTheme();
@@ -15,12 +17,12 @@ const PriceTrackerNavBar = React.memo(() => {
     <div>
       {" "}
       {/** Nav Bar */}
-      <Navbar bg={theme} data-bs-theme={theme}>
+      <Navbar bg="primary" data-bs-theme="dark">
         <Container>
           <Navbar.Brand as={Link} to="/">
             <img src={logo} width="60" height="60" alt="PT" />
           </Navbar.Brand>
-          <Nav className="me-auto">
+          <Nav variant="tabs" className="me-auto">
             <Nav.Link as={Link} to="/">
               Price Tracker
             </Nav.Link>
@@ -31,6 +33,15 @@ const PriceTrackerNavBar = React.memo(() => {
               Help
             </Nav.Link>
           </Nav>
+          <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="success">Search</Button>
+          </Form>
         </Container>
       </Navbar>
       {/** Nav Bar */}
